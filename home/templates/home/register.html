@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{%load static%}
+
+
+{% block page_title %}
+    REGISTER
+{% endblock page_title %}
+
+
+{% block contents %}
+<style type="text/css">
+    #id_password1 ,#id_password2 {
+        display:block;
+        width:100%;
+        height:calc(1.5em + .75rem + 2px);
+        padding:.375rem .75rem;
+        font-size:1rem;
+        font-weight:400;
+        line-height:1.5;
+        color:#6e707e;
+        background-color:#fff;
+        background-clip:padding-box;
+        border:1px solid #d1d3e2;
+        border-radius:.35rem;
+        transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+</style>
+
+    
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block" style="background:url({% static "img/error.jpeg" %});background-size:cover;background-position:-10px -90px;"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form class="user" method="POST">
+                                {% csrf_token %}
+
+                                {% for form in forms %}
+                                    
+                                <div class="form-group">
+                              
+                                {{form.label}}
+                                <div class="form-row">
+                                {{form}}
+                                </div>
+                                </div>
+
+                              
+                                <br>
+                                {% endfor %}
+                                <center>
+                                <button type="submit" class="btn btn-success">Create</button></center>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'home:login' %}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+  $(function () {
+ $('#datetimepicker4').datetimepicker({
+                    format: 'L'
+                });
+            });
+</script>
+{% endblock contents %}

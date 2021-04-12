@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    
+{% endblock page_title %}
+
+
+{% block contents %}
+<div style="text-align: center;" class="container-fluid">
+    
+    <h1>Buku yang anda gagal dipinjam Karena tidak ada dalam Database</h1>
+    <a href="{% url 'home:daftar_buku' %}" class="btn btn-info">Cek data buku ?</a>
+</div>
+    {% endblock contents %}
+    
+    

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block contents %}
+    
+<div class="form-group bmd-form-group">
+  <label class="bmd-label-static" 
+         for="company_autocomplete_input">Cerca azienda</label>
+  <input id="company_autocomplete_input" class="form-control"
+         placeholder="Nome azienda" style="width:500px">
+</div>
+ 
+<button class="btn btn-raised btn-primary" type="submit"
+        style="background-color:#1A88B9;">Aggiungi</button>
+
+
+
+
+<!-- jQuery !-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+<!-- jQuery UI !-->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+<script>
+  $(function() {
+    $("#company_autocomplete_input").autocomplete({
+      source: "{% url 'home:company-autocomplete' %}",
+      minLength: 1,
+    });
+  });
+</script>
+
+{% endblock contents %}
+    

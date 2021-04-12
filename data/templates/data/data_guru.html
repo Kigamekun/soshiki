@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{%load static%}
+
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	     <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">DATA</h1>
+                    <p class="mb-4">ini adalah data Guru SMKN4BOGOR.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DaTables Guru</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>NIP</th>
+                                            <th>Age</th>
+                                            <th>ExpertClass</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>NIP</th>
+                                            <th>Age</th>
+                                            <th>ExpertClass</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    	{% for student in students %}
+                                    		
+
+
+                                    	<tr>
+                                            <td>{{student.FirstName}}</td>
+                                            <td>{{student.LastName}}</td>
+                                            <td>{{student.Nip}}</td>
+                                            <td>{{student.Age}}</td>
+                                            <td>{{student.expertClass}}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+{% endblock contents %}

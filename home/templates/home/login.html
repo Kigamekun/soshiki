@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{%load static%}
+
+{% block page_title %}
+    {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+    
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block " style="background:url(https://cdn.trentech.id/static/img/2020/04/kalau-mau-kaya-tanpa-jadi-pengusaha-belajar-coding-bisa-jadi-jawabannya-trentech-seputar-startup_gdghjn_cznmoa-740x394.jpg);background-size:cover;background-position:-180px 0px;"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                	
+			{% if messages %}
+    
+			{% for message in messages %}
+			{% if message.tags %} 
+            
+            {% if message.tags == "warning" %}
+                
+			<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+				<strong>Voilla </strong> {{ message }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  </div>
+              {% else %}
+
+			<div class="alert alert-{{ message.tags }}  alert-dismissible fade show" role="alert">
+				<strong>Voilla </strong> {{ message }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  </div>
+			
+			
+            {% endif %}
+                
+			{% endif %}
+			{% endfor %}
+		
+		{% endif %}
+                                    <form class="user" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                placeholder="Enter Name" name="username" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                 placeholder="Password" name="password" autocomplete="off">
+                                        </div>
+                                        
+                                       <button class="btn btn-primary btn-user btn-block" type="submit">LOGIN</button>
+                                        
+                                     
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'home:register' %}">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock contents %}

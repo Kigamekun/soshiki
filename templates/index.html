@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+
+{% block contents %}
+	<div class="container-fluid">
+		<center><div class="img" style="width:80%;height:400px;background:url({% static "img/offline.jpeg" %});background-size:cover;"></div>
+	</div></center>
+{% endblock contents %}

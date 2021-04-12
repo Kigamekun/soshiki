@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%load static%}
+
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	<center><p style="font-size:50px;"><i class="fas fa-heart-broken"></i> apakah anda yakin mau logout ?</p>
+
+
+
+	<form method="POST">
+		{% csrf_token %}
+
+		<input class="btn btn-danger" type="submit" name="logout">
+
+	</form>
+</center>	
+{% endblock contents %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	
+<div class="container">
+	
+	<form method="POST" enctype="multipart/form-data">
+
+		{% csrf_token %}
+		
+		{% for form in forms %}
+		
+		{% if form.label == "Thumb" %}
+		<div class="input-group mb-3">
+			<label class="input-group-text" for="inputGroupFile01">Upload</label>
+			{{form}}
+		  </div>
+
+		  {% else %}
+		  	
+		<div class="form-group">
+			<h4>{{form.label}}</h4> 
+			{{form}}
+		</div>
+		
+		{% endif %}
+		
+		{% endfor %}
+
+
+		<center><button class="btn btn-success" type="submit">Buat !</button></center>
+		<br>
+		<br>
+
+		
+		
+
+
+	</form>
+</div>
+
+
+{% endblock contents %}

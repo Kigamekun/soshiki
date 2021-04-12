@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+
+
+{% block page_title %}
+    {{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+<div class="container-fluid">
+  <center>
+   	
+    {% if messages %}
+    
+    {% for message in messages %}
+    {% if message.tags %} 
+    <div class="{{ message.tags }} alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Voilla </strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+    {% endif %}
+    {% endfor %}
+
+{% endif %}
+    <div style="display: flex; flex-wrap: wrap; width: 100%;">  
+    
+    
+    {% for post in posts %}
+
+
+    <div class="card mb-3" style="max-width: 800px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{post.thumb.url}}" class="card-img" alt="{{post.judul}}" style="height:100%;" >
+      </div>
+      <div class="col-md-8">
+          <div class="card-body">
+            <a class="slug" href="/home/detail/{{post.slug}}">
+                <h5 style="margin-left:30px;" class="card-title">{{post.judul}}</h5> </a>
+
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">{{post.update}}</small></p>
+
+                    
+
+                {% if request.user.is_staff %}
+                    
+                    <table style="border-collapse:separate;border-spacing:0 3em;">
+                        <td>
+
+
+                            <form action="{% url 'home:delete' post.id %}" method="post" onsubmit="window.mytest()">
+                                {% csrf_token %}
+                                <button class="btn btn-danger">DELETE</button>    
+                            
+                            </form> 
+                            
+
+
+                        </td>
+                        
+                        
+                        
+                        <td ><a class="btn btn-warning" href="{% url 'home:update' post.id %}">UPDATE</a></td></table>
+
+
+                        
+
+                    <br>
+                    {% endif %}            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</center>  
+</div>
+<script type="text/javascript">window.mytest = function() { var isValid = confirm('Are you sure ?');if (!isValid) { event.preventDefault();  alert("It wont delete. Yay!");}}</script>
+{% endblock contents %}

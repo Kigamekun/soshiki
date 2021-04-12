@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	
+<div class="container">
+	
+	<form method="POST" enctype="multipart/form-data">
+
+		{% csrf_token %}
+		
+		{% for form in forms %}
+		<div class="form-group">
+			<h4>{{form.label}}</h4> 
+			{{form}}
+		</div>
+		
+		{% endfor %}
+
+
+		<center><button class="btn btn-success" type="submit">kirim !</button></center>
+		<br>
+		<br>
+
+		
+		
+
+
+	</form>
+</div>
+
+
+{% endblock contents %}

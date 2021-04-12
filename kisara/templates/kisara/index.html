@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{%load static%}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+	<div class="container-fluid">
+		
+		<div class="card">
+  <div class="card-header">
+    Harap dibaca dan dipahami jangan cuman diabaikan !!!
+  </div>
+  <div class="card-body">
+    
+  	{% for post in posts %}
+  		
+  	
+    <blockquote class="blockquote mb-0">
+      <h3>Saran : {{post.saran}}</h3>
+      <h3>Keluhan : {{post.keluhan}}</h3>
+      <footer class="blockquote-footer">Someone we can called him <cite title="Source Title"><b>{{post.nama}}</b></cite></footer>
+    </blockquote>
+    <br>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+	</div>
+{% endblock contents %}

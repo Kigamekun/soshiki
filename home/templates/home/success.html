@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    
+{% endblock page_title %}
+
+
+{% block contents %}
+<div style="text-align: center;" class="container-fluid">
+    <h1>Buku yang anda Pilih berhasil dipinjam ! kembalikan pada waktunya yaa</h1>
+    <a href="{% url 'home:databuku' %}" class="btn btn-info">Lihat buku yang dipinjam ?</a>
+</div>
+    {% endblock contents %}
+    
+    
